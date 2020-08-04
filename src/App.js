@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
 //import { Container } from "reactstrap";
@@ -6,16 +6,20 @@ import ExpenseTotal from "./components/ExpenseTotal";
 import ExpenseList from "./components/ExpenseList";
 import AddExpense from "./components/AddExpense";
 
-const ALL_EXPENCES = [
-  { id: 1, name: "Breakfast", amount: "200" },
-  { id: 2, name: "Cab", amount: "300" },
-  { id: 3, name: "Recharge", amount: "489" },
-];
+// [
+//   { id: 1, name: "Breakfast", amount: "200" },
+//   { id: 2, name: "Cab", amount: "300" },
+//   { id: 3, name: "Recharge", amount: "489" },
+// ];
+
+const ALL_EXPENCES = localStorage.getItem("expenses")
+  ? JSON.parse(localStorage.getItem("expenses"))
+  : [];
 
 function App() {
   const [expenses, setExpenses] = useState(ALL_EXPENCES);
 
-  const [id, setID] = useState("");
+  const [id, setID] = useState(1);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
 
@@ -30,7 +34,7 @@ function App() {
   const SubmitForm = (e) => {
     e.preventDefault();
 
-    setID(id + 1);
+    setID((prevID) => prevID + 1);
 
     if (name !== "" && amount > 0) {
       const newexpense = { id, name, amount };
@@ -43,6 +47,13 @@ function App() {
     }
   };
 
+  const DeleteAll = () => {
+    setExpenses([]);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses));
+  }, [expenses]);
   return (
     <div>
       <Header />
@@ -54,6 +65,7 @@ function App() {
         AddName={AddName}
         AddAmount={AddAmount}
         SubmitForm={SubmitForm}
+        DeleteAll={DeleteAll}
       />
     </div>
   );
