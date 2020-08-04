@@ -10,7 +10,14 @@ import {
   Row,
 } from "reactstrap";
 
-const AddExpense = ({ name, amount, AddName, AddAmount, SubmitForm }) => {
+const AddExpense = ({
+  name,
+  amount,
+  AddName,
+  AddAmount,
+  SubmitForm,
+  DeleteAll,
+}) => {
   return (
     <Container className="text-center" style={{ marginTop: 20 }}>
       <h2>Add Your Expense</h2>
@@ -41,8 +48,13 @@ const AddExpense = ({ name, amount, AddName, AddAmount, SubmitForm }) => {
         </Row>
 
         <Row>
-          <Col md={12}>
-            <Button color="primary">Add</Button>
+          <Col md={6}>
+            <Button color="primary">Add Expense</Button>
+          </Col>
+          <Col md={6}>
+            <Button color="danger" onClick={DeleteAll}>
+              Delete All
+            </Button>
           </Col>
         </Row>
       </Form>
