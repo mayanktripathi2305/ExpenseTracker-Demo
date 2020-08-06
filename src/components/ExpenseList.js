@@ -3,15 +3,31 @@ import { ListGroup, ListGroupItem, Container } from "reactstrap";
 
 const ExpenseList = ({ expenses }) => {
   return (
-    <Container className="text-center" style={{ marginTop: 20 }}>
-      <ListGroup>
-        {expenses.map((expense) => (
-          <ListGroupItem key={expense.id}>
-            {expense.name} Rs. {expense.amount}
-          </ListGroupItem>
-        ))}
-      </ListGroup>
-    </Container>
+    <>
+      <div className="container-md" style={{ marginTop: 20 }}>
+        <div className="row">
+          <div className="col-md-6">
+            <ul className="list-group">
+              {expenses.map((expense) => (
+                <li className="list-group-item" key={expense.id}>
+                  {expense.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="col-md-6">
+            <ul className="list-group">
+              {expenses.map((expense) => (
+                <li className="list-group-item" key={expense.id}>
+                  Rs. {expense.amount}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
