@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 //import { Container } from "reactstrap";
 import ExpenseTotal from "./components/ExpenseTotal";
 import ExpenseList from "./components/ExpenseList";
 import AddExpense from "./components/AddExpense";
-
-// [
-//   { id: 1, name: "Breakfast", amount: "200" },
-//   { id: 2, name: "Cab", amount: "300" },
-//   { id: 3, name: "Recharge", amount: "489" },
-// ];
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Nav from "./components/Nav";
 
 const ALL_EXPENCES = localStorage.getItem("expenses")
   ? JSON.parse(localStorage.getItem("expenses"))
@@ -56,17 +54,25 @@ function App() {
   }, [expenses]);
   return (
     <div>
-      <Header />
-      <ExpenseTotal expense={expenses} />
-      <ExpenseList expenses={expenses} />
-      <AddExpense
-        name={name}
-        amount={amount}
-        AddName={AddName}
-        AddAmount={AddAmount}
-        SubmitForm={SubmitForm}
-        DeleteAll={DeleteAll}
-      />
+      <Router>
+        <Nav />
+
+        <Switch>
+          <Route path="/" exact component={Header}></Route>
+          <Route path="/About" component={About}></Route>
+          <Route path="/Contact" component={Contact}></Route>
+        </Switch>
+        <ExpenseTotal expense={expenses} />
+        <ExpenseList expenses={expenses} />
+        <AddExpense
+          name={name}
+          amount={amount}
+          AddName={AddName}
+          AddAmount={AddAmount}
+          SubmitForm={SubmitForm}
+          DeleteAll={DeleteAll}
+        />
+      </Router>
     </div>
   );
 }
