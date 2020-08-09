@@ -1,16 +1,16 @@
 import React from "react";
 
-const ExpenseTotal = ({ expense }) => {
+const expenseTotal = ({ expenses }) => {
   return (
-    <div class="container-md" style={{ marginTop: 50 }}>
+    <div className="container-md" style={{ marginTop: 50 }}>
       <div className="row">
-        <div class="col-md-6" align="center">
+        <div className="col-md-6" align="center">
           <h3>Total Expense </h3>
         </div>
-        <div class="col-md-6" align="center">
+        <div className="col-md-6" align="center">
           <h3>
             Rs.{" "}
-            {expense.reduce((accumulator, currentValue) => {
+            {expenses.reduce((accumulator, currentValue) => {
               return (accumulator += parseInt(currentValue.amount));
             }, 0)}
           </h3>
@@ -20,4 +20,4 @@ const ExpenseTotal = ({ expense }) => {
   );
 };
 
-export default ExpenseTotal;
+export default expenseTotal;
