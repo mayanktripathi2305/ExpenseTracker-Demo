@@ -4,24 +4,20 @@ import { Link } from "react-router-dom";
 const Nav = () => {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <Link to="/">
-          <a class="navbar-brand">Expense Tracker</a>
+          <div className="navbar-brand">Expense Tracker </div>
         </Link>
-        <div className="navbar-nav ml-auto">
+        <div className="navbar-nav">
           <Link to="/About">
-            <a className="nav-link" style={{ fontSize: 20 }}>
+            <div className="nav-link" style={{ fontSize: 20 }}>
               About
-            </a>
+            </div>
           </Link>
           <Link to="/Contact">
-            <button
-              class="btn btn-primary mx-4"
-              type="button"
-              style={{ fontSize: 20 }}
-            >
+            <div className="nav-link" style={{ fontSize: 20 }}>
               Contact Us
-            </button>
+            </div>
           </Link>
         </div>
       </nav>
