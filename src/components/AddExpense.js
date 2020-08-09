@@ -21,7 +21,7 @@ const AddExpense = ({
   return (
     <Container className="text-center" style={{ marginTop: 20 }}>
       <h2>Add Your Expense</h2>
-      <Form style={{ marginTop: 20 }} onSubmit={SubmitForm}>
+      <Form style={{ marginTop: 20 }}>
         <Row>
           <Col md={6}>
             <FormGroup>
@@ -49,7 +49,9 @@ const AddExpense = ({
 
         <Row>
           <Col md={6}>
-            <Button color="primary">Add Expense</Button>
+            <Button color="primary" onClick={SubmitForm}>
+              Add Expense
+            </Button>
           </Col>
           <Col md={6}>
             <Button color="danger" onClick={DeleteAll}>
