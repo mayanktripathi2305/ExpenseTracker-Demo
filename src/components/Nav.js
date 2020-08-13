@@ -8,7 +8,7 @@ const Nav = () => {
         <Link to="/">
           <div className="navbar-brand">Expense Tracker </div>
         </Link>
-        <div className="navbar-nav">
+        <div className="navbar-nav ml-auto">
           <Link to="/About">
             <div className="nav-link" style={{ fontSize: 20 }}>
               About
