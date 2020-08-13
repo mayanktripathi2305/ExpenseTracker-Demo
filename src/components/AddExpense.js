@@ -19,48 +19,91 @@ const AddExpense = ({
   DeleteAll,
 }) => {
   return (
-    <Container className="text-center" style={{ marginTop: 20 }}>
-      <h2>Add Your Expense</h2>
-      <Form style={{ marginTop: 20 }}>
-        <Row>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="Expense Type">Expense For</Label>
-              <Input
-                type="text"
-                value={name}
-                placeholder="Add Expense Type"
-                onChange={AddName}
-              />
-            </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="Expense Amount">Expense Amount</Label>
-              <Input
-                type="number"
-                value={amount}
-                placeholder="Add Expense Amount"
-                onChange={AddAmount}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
+    <div className="container" style={{ marginTop: 20 }}>
+      <div className="row justify-content-center">
+        <div className="col-md-auto">
+          <button
+            type="button"
+            className="btn btn-primary"
+            data-toggle="modal"
+            data-target="#staticBackdrop"
+          >
+            Add Expense
+          </button>
+        </div>
+        <div className="col-md-auto">
+          <button type="button" className="btn btn-danger" onClick={DeleteAll}>
+            Delete All Expenses
+          </button>
+        </div>
+      </div>
 
-        <Row>
-          <Col md={6}>
-            <Button color="primary" onClick={SubmitForm}>
-              Add Expense
-            </Button>
-          </Col>
-          <Col md={6}>
-            <Button color="danger" onClick={DeleteAll}>
-              Delete All
-            </Button>
-          </Col>
-        </Row>
-      </Form>
-    </Container>
+      <div
+        className="modal fade"
+        id="staticBackdrop"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabIndex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="staticBackdropLabel">
+                Add New Expense
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <FormGroup>
+                <Label for="Expense Type">Add Expense Type</Label>
+                <Input
+                  type="text"
+                  value={name}
+                  placeholder="e.g Breakfast"
+                  onChange={AddName}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="Expense Amount">Add Expense Amount</Label>
+                <Input
+                  type="number"
+                  value={amount}
+                  placeholder="Add Expense Amount"
+                  onChange={AddAmount}
+                />
+              </FormGroup>
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={SubmitForm}
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/*Normal Component*/}
+    </div>
   );
 };
 
