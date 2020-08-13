@@ -1,4 +1,5 @@
 import React from "react";
+import "./Expense.css";
 
 import { container, nav, navbar } from "bootstrap";
 
@@ -9,13 +10,13 @@ import { container, nav, navbar } from "bootstrap";
 
 const Header = () => {
   return (
-    <>
-      <div className="container-md" style={{ marginTop: 100 }}>
-        <div className="row justify-content-center">
-          <h2>Expense Tracker</h2>
+    <div className="container">
+      <div className="row justify-content-md-center">
+        <div className="col-md-auto Header">
+          <h2>MANAGE YOUR EXPENSES</h2>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
