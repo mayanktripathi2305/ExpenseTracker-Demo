@@ -1,13 +1,14 @@
 import React from "react";
+import "./Expense.css";
 
 const expenseTotal = ({ expenses }) => {
   return (
-    <div className="container-md" style={{ marginTop: 50 }}>
-      <div className="row">
-        <div className="col-md-6" align="center">
+    <div className="container" style={{ marginTop: 50 }}>
+      <div className="row justify-content-center">
+        <div className="col-md-auto TotalExpense">
           <h3>Total Expense </h3>
         </div>
-        <div className="col-md-6" align="center">
+        <div className="col-md-auto TotalExpense">
           <h3>
             Rs.{" "}
             {expenses.reduce((accumulator, currentValue) => {
