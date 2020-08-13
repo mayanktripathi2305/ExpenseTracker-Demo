@@ -80,9 +80,9 @@ function App() {
     <div>
       <Router>
         <Nav />
-
-        <Switch>
-          {/* <Route
+        <div className="container App">
+          <Switch>
+            {/* <Route
             path="/"
             exact
             render={(props) => (
@@ -92,24 +92,25 @@ function App() {
               </>
             )}
           ></Route> */}
-          <Header />
-          {/* <ProtectedRoute
+            <Header />
+            {/* <ProtectedRoute
             path="/Dashboard"
             component={Dashboard}
           ></ProtectedRoute> */}
-          <Route path="/About" component={About}></Route>
-          <Route path="/Contact" component={Contact}></Route>
-        </Switch>
-        <ExpenseTotal expenses={expenses} />
-        <ExpenseList expenses={expenses} />
-        <AddExpense
-          name={name}
-          amount={amount}
-          AddName={AddName}
-          AddAmount={AddAmount}
-          SubmitForm={SubmitForm}
-          DeleteAll={DeleteAll}
-        />
+            <Route path="/About" component={About}></Route>
+            <Route path="/Contact" component={Contact}></Route>
+          </Switch>
+          <ExpenseTotal expenses={expenses} />
+          <ExpenseList expenses={expenses} />
+          <AddExpense
+            name={name}
+            amount={amount}
+            AddName={AddName}
+            AddAmount={AddAmount}
+            SubmitForm={SubmitForm}
+            DeleteAll={DeleteAll}
+          />
+        </div>
       </Router>
     </div>
   );
