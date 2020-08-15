@@ -57,24 +57,14 @@ function App() {
     setExpenses([]);
   };
 
-  // const loginSuccess = () => {
-  //   setAccessToken();
+  // const DeleteExpense = (id) => {
+  //   const newExpenseList = expenses.filter((item) => item.ID !== id);
+  //   setExpenses(newExpenseList);
   // };
 
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
-
-  // const allProps = {
-  //   ID,
-  //   expenses,
-  //   name,
-  //   amount,
-  //   AddName,
-  //   AddAmount,
-  //   SubmitForm,
-  //   DeleteAll,
-  // };
 
   return (
     <div>
