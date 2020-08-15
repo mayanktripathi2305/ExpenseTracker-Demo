@@ -19,12 +19,12 @@ const AddExpense = ({
   DeleteAll,
 }) => {
   return (
-    <div className="container" style={{ marginTop: 20 }}>
+    <div className="container" style={{ marginTop: 100 }}>
       <div className="row justify-content-center">
         <div className="col-md-auto">
           <button
             type="button"
-            className="btn btn-primary"
+            className="ManageExpense"
             data-toggle="modal"
             data-target="#staticBackdrop"
           >
@@ -32,7 +32,7 @@ const AddExpense = ({
           </button>
         </div>
         <div className="col-md-auto">
-          <button type="button" className="btn btn-danger" onClick={DeleteAll}>
+          <button type="button" className="DeleteExpense" onClick={DeleteAll}>
             Delete All Expenses
           </button>
         </div>
