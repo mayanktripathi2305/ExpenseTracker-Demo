@@ -5,10 +5,10 @@ const expenseTotal = ({ expenses }) => {
   return (
     <div className="container" style={{ marginTop: 50 }}>
       <div className="row justify-content-center">
-        <div className="col-md-auto TotalExpense">
+        <div className="col-md-auto ManageExpense">
           <h3>Total Expense </h3>
         </div>
-        <div className="col-md-auto TotalExpense">
+        <div className="col-md-auto ManageExpense">
           <h3>
             Rs.{" "}
             {expenses.reduce((accumulator, currentValue) => {
