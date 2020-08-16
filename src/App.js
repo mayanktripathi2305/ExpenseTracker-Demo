@@ -37,10 +37,14 @@ function App() {
     setAmount(e.target.value);
   };
 
+  const AddID = () => {
+    setID(ID + 1);
+  };
+
   const SubmitForm = (e) => {
     e.preventDefault();
-
-    setID(ID + 1);
+    e.stopPropagation();
+    AddID();
 
     if (name !== "" && amount > 0) {
       const newexpense = { ID, name, amount };
@@ -54,13 +58,16 @@ function App() {
   };
 
   const DeleteAll = () => {
+    localStorage.clear();
+    setID(1);
     setExpenses([]);
   };
 
-  // const DeleteExpense = (id) => {
-  //   const newExpenseList = expenses.filter((item) => item.ID !== id);
-  //   setExpenses(newExpenseList);
-  // };
+  const DeleteExpense = (id) => {
+    const newExpenseList = expenses.filter((item) => item.ID !== id);
+    //localStorage.removeItem(id);
+    setExpenses(newExpenseList);
+  };
 
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
@@ -91,7 +98,7 @@ function App() {
             <Route path="/Contact" component={Contact}></Route>
           </Switch>
           <ExpenseTotal expenses={expenses} />
-          <ExpenseList expenses={expenses} />
+          <ExpenseList expenses={expenses} DeleteExpense={DeleteExpense} />
           <AddExpense
             name={name}
             amount={amount}
