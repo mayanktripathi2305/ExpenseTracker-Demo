@@ -1,12 +1,13 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const ExpenseList = ({ expenses }) => {
+const ExpenseList = ({ expenses, DeleteExpense }) => {
   return (
     <>
       <table className="table table-dark" style={{ marginTop: 50 }}>
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Expense</th>
             <th scope="col">Amount in Rs</th>
             <th scope="col">Delete</th>
@@ -16,11 +17,13 @@ const ExpenseList = ({ expenses }) => {
         <tbody>
           {expenses.map((expense) => (
             <tr key={expense.ID}>
-              <th scope="row">{expense.ID}</th>
               <td>{expense.name}</td>
               <td>{expense.amount}</td>
               <td>
-                <button type="button">Delete</button>
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  onClick={() => DeleteExpense(expense.ID)}
+                />
               </td>
             </tr>
           ))}
