@@ -101,8 +101,6 @@ const AddExpense = ({
           </div>
         </div>
       </div>
-
-      {/*Normal Component*/}
     </div>
   );
 };
