@@ -22,11 +22,13 @@ const ALL_EXPENCES = localStorage.getItem("expenses")
 // ];
 
 function App() {
+  const EXPENSES_TYPE = ["Food", "Grocery", "Entertainment", "Fuel"];
   const [expenses, setExpenses] = useState(ALL_EXPENCES);
 
   const [ID, setID] = useState(1);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
+  const [expenseType, setExpenseType] = useState("");
   // const [accessToken, setAccessToken] = useState("");
 
   const AddName = (e) => {
@@ -37,6 +39,9 @@ function App() {
     setAmount(e.target.value);
   };
 
+  const AddExpenseType = (e) => {
+    setExpenseType(e.target.value);
+  };
   const AddID = () => {
     setID(ID + 1);
   };
@@ -47,7 +52,7 @@ function App() {
     AddID();
 
     if (name !== "" && amount > 0) {
-      const newexpense = { ID, name, amount };
+      const newexpense = { ID, name, amount, expenseType };
 
       setExpenses([...expenses, newexpense]);
       setName("");
@@ -102,8 +107,10 @@ function App() {
           <AddExpense
             name={name}
             amount={amount}
+            expenses_Type={EXPENSES_TYPE}
             AddName={AddName}
             AddAmount={AddAmount}
+            AddExpenseType={AddExpenseType}
             SubmitForm={SubmitForm}
             DeleteAll={DeleteAll}
           />

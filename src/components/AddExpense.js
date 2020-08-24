@@ -1,20 +1,13 @@
 import React from "react";
-import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Container,
-  Col,
-  Button,
-  Row,
-} from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 
 const AddExpense = ({
   name,
   amount,
+  expenses_Type,
   AddName,
   AddAmount,
+  AddExpense,
   SubmitForm,
   DeleteAll,
 }) => {
@@ -64,7 +57,36 @@ const AddExpense = ({
             </div>
             <div className="modal-body">
               <FormGroup>
-                <Label for="Expense Type">Add Expense Type</Label>
+                <div className="dropdown">
+                  <button
+                    className="btn btn-warning dropdown-toggle dropdown-toggle-split"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Expense Type
+                  </button>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    {expenses_Type.map((expenseType) => (
+                      <a
+                        className="dropdown-item"
+                        key={expenseType.expenseType}
+                        value={expenseType.expenseType}
+                        onChange={AddExpense}
+                      >
+                        {expenseType}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </FormGroup>
+              <FormGroup>
+                <Label for="Expense Type">Add Expense For</Label>
                 <Input
                   type="text"
                   value={name}

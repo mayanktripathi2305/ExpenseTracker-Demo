@@ -8,7 +8,8 @@ const ExpenseList = ({ expenses, DeleteExpense }) => {
       <table className="table table-dark" style={{ marginTop: 50 }}>
         <thead>
           <tr>
-            <th scope="col">Expense</th>
+            <th scope="col">Expense Type</th>
+            <th scope="col">Expense For</th>
             <th scope="col">Amount in Rs</th>
             <th scope="col">Delete</th>
           </tr>
@@ -17,6 +18,7 @@ const ExpenseList = ({ expenses, DeleteExpense }) => {
         <tbody>
           {expenses.map((expense) => (
             <tr key={expense.ID}>
+              <td>{expense.expenseType}</td>
               <td>{expense.name}</td>
               <td>{expense.amount}</td>
               <td>
