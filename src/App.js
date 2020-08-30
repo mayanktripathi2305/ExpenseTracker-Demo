@@ -16,6 +16,10 @@ const ALL_EXPENCES = localStorage.getItem("expenses")
   ? JSON.parse(localStorage.getItem("expenses"))
   : [];
 
+const TotalIncome = localStorage.getItem("incomes")
+  ? JSON.parse(localStorage.getItem("incomes"))
+  : [];
+
 // const ALL_EXPENCES = [
 //   { ID: 1, name: "abbb", amount: 22 },
 //   { ID: 2, name: "bbb", amount: 32 },
@@ -28,6 +32,8 @@ function App() {
   const [ID, setID] = useState(1);
   const [name, setName] = useState("");
   const [amount, setAmount] = useState(0);
+  const [incomes, setIncomes] = useState(TotalIncome);
+  const [income, setIncome] = useState(0);
   const [expenseType, setExpenseType] = useState("");
   // const [accessToken, setAccessToken] = useState("");
 
@@ -39,11 +45,15 @@ function App() {
     setAmount(e.target.value);
   };
 
+  const AddIncome = (e) => {
+    setIncome(e.target.value);
+  };
+
   const AddExpenseType = (e) => {
     setExpenseType(e.target.value);
   };
   const AddID = () => {
-    setID(ID + 1);
+    setID((prevState) => prevState + 1);
   };
 
   const SubmitForm = (e) => {
@@ -62,6 +72,19 @@ function App() {
     }
   };
 
+  const SubmitIncome = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (income !== "" && income > 0) {
+      const newIncome = { income };
+      setIncomes([...incomes, newIncome]);
+      setIncome("");
+    } else {
+      console.log("Income must be greater than 0");
+    }
+  };
+
   const DeleteAll = () => {
     localStorage.clear();
     setID(1);
@@ -76,7 +99,8 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
-  }, [expenses]);
+    localStorage.setItem("income", JSON.stringify(incomes));
+  }, [expenses, incomes]);
 
   return (
     <div>
@@ -102,16 +126,19 @@ function App() {
             <Route path="/About" component={About}></Route>
             <Route path="/Contact" component={Contact}></Route>
           </Switch>
-          <ExpenseTotal expenses={expenses} />
+          <ExpenseTotal expenses={expenses} incomes={incomes} />
           <ExpenseList expenses={expenses} DeleteExpense={DeleteExpense} />
           <AddExpense
             name={name}
             amount={amount}
             expenses_Type={EXPENSES_TYPE}
+            income={income}
             AddName={AddName}
             AddAmount={AddAmount}
+            AddIncome={AddIncome}
             AddExpenseType={AddExpenseType}
             SubmitForm={SubmitForm}
+            SubmitIncome={SubmitIncome}
             DeleteAll={DeleteAll}
           />
         </div>
